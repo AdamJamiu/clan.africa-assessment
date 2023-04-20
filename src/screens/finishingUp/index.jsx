@@ -1,7 +1,24 @@
-import React from "react";
+import Button from "../../components/button";
+import "./styles.css";
 
 function FinishingUp() {
-  return <div>FinishingUp</div>;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <form className="finish-container" onSubmit={handleSubmit}>
+      <h2 className="form-title">Finishing Up</h2>
+      <p className="form-text">
+        Double-check everything looks OK before confirming
+      </p>
+
+      <div className="finishing-wrap">
+        <div className="finsih-col"></div>
+      </div>
+
+      <Button />
+    </form>
+  );
 }
 
 export default FinishingUp;

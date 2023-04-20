@@ -1,0 +1,91 @@
+@import url("../../index.css");
+
+.pick-container {
+    margin-bottom: 1em;
+    width: 90%;
+}
+
+.pick-container .form-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.pick-container .add-on-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* width: 100%; */
+}
+
+.pick-container .form-title {
+    color: var(--primary-marine-blue);
+    line-height: 1.5;
+    font-size: 28px;
+}
+
+.pick-container .selection-wrap .selection-col {
+    padding: 2em 1em;
+    cursor: pointer;
+    border: 1px solid var(--neutral-light-gray);
+    width: 150px;
+    border-radius: 12px;
+}
+
+.pick-container .selection-wrap .selection-col:hover {
+    border-color: var(--primary-purplish-blue);
+}
+
+.pick-container .selection-wrap .selection-col:active {
+    background-color: var(--neutral-light-gray);
+    transition: all 0.2s ease;
+}
+
+.pick-container .selection-wrap .active {
+    background-color: var(--neutral-magnolia);
+    border-color: var(--primary-purplish-blue);
+    transition: all 0.2s ease-out;
+}
+
+.pick-container .form-title-sm {
+    color: var(--primary-marine-blue);
+    line-height: 1.5;
+    font-size: var(--body-paragraph);
+}
+
+.pick-container .selection-wrap .form-icon {
+    margin-bottom: 3em;
+}
+
+.pick-container .form-text {
+    font-size: 14px;
+    color: var(--neutral-cool-gray);
+    line-height: 1.9;
+    padding-bottom: 2em;
+}
+
+/* this is the styles for the form transition */
+.form-transition-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.form-transition-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.form-transition-exit {
+    opacity: 1;
+}
+
+.form-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}

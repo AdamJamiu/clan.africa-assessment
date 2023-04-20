@@ -5,8 +5,13 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   // Global states
   const [checked, setChecked] = useState(false);
-  const [state, setState] = useState(2);
+  const [state, setState] = useState(4);
   const [selectedPlan, setSelectedPlan] = useState("arcade");
+  // select your plan check boxes
+  const [onlineService, setOnlineService] = useState(false);
+  const [largerStorage, setLargerStorage] = useState(false);
+  const [customizeProfile, setCustomizeProfile] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +19,23 @@ export const AppProvider = ({ children }) => {
   });
 
   // Global Methods
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    switch (name) {
+      case "onlineService":
+        setOnlineService(checked);
+        break;
+      case "largerStorage":
+        setLargerStorage(checked);
+        break;
+      case "customizeProfile":
+        setCustomizeProfile(checked);
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleCheck = () => {
     setChecked(!checked);
   };
@@ -49,6 +71,10 @@ export const AppProvider = ({ children }) => {
     handleCheck,
     selectedPlan,
     setSelectedPlan,
+    onlineService,
+    largerStorage,
+    customizeProfile,
+    handleCheckboxChange,
   };
   return <AppContext.Provider value={actions}>{children}</AppContext.Provider>;
 };

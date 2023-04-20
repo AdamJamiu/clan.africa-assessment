@@ -59,3 +59,22 @@ input::-moz-placeholder {
   color: var(--neutral-cool-gray);
   font-weight: bold;
 }
+
+
+.fade-enter {
+  opacity: 0;
+  transition: opacity 3500ms ease-in-out;
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}

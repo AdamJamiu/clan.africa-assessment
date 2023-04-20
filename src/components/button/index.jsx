@@ -15,7 +15,7 @@ const Button = () => {
       </button>
 
       <button type="submit" className="btn-next">
-        {state <= 5 ? "Next Step" : "Confirm"}
+        {state === 4 ? "Confirm" : "Next Step"}
       </button>
     </div>
   );

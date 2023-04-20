@@ -1,31 +1,50 @@
 @import url("../../index.css");
 
-.form-section{
+.form-section {
     margin-bottom: 1em;
 }
 
-.info-container .form-title{
-color: var(--primary-marine-blue);
-line-height: 1.5;
-font-size: 28px;
+.info-container .form-title {
+    color: var(--primary-marine-blue);
+    line-height: 1.5;
+    font-size: 28px;
 }
 
-.label-wrap{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-width: 100%;
+.label-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.info-container .form-text{
+.info-container .form-text {
     font-size: 15px;
     color: var(--neutral-cool-gray);
     line-height: 1.9;
     padding-bottom: 2em;
 }
 
-.label-wrap .error{
+.label-wrap .error {
     font-size: 14px;
     color: var(--primary-strawberry-red);
     font-weight: bold;
+}
+
+/* this is the styles for the form transition */
+.fade-enter {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.fade-enter-active {
+    opacity: 1;
+}
+
+.fade-exit {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit-active {
+    opacity: 0;
 }
