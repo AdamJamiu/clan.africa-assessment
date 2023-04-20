@@ -7,10 +7,17 @@ export const AppProvider = ({ children }) => {
   const [checked, setChecked] = useState(false);
   const [state, setState] = useState(4);
   const [selectedPlan, setSelectedPlan] = useState("arcade");
+
   // select your plan check boxes
   const [onlineService, setOnlineService] = useState(false);
   const [largerStorage, setLargerStorage] = useState(false);
   const [customizeProfile, setCustomizeProfile] = useState(false);
+
+  //choosed plan state
+  const [plan, setPlan] = useState({
+    choosedPlan: "",
+    price: "",
+  });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,6 +26,12 @@ export const AppProvider = ({ children }) => {
   });
 
   // Global Methods
+  // This method check if user choose monthly or yearly
+  const handlePricePlan = () => {
+    if (checked) {
+    }
+  };
+
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     switch (name) {

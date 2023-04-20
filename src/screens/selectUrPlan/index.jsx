@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../components/button";
 import arcadeIcon from "../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../assets/images/icon-advanced.svg";
@@ -8,14 +8,71 @@ import useApp from "../../hooks/useApp";
 import "./style.css";
 import { CSSTransition } from "react-transition-group";
 
+const initialState = {
+  arcade: {
+    name: "Arcade",
+    price: 9,
+  },
+  advanced: {
+    name: "Advanced",
+    price: 12,
+  },
+  pro: {
+    name: "Pro",
+    price: 15,
+  },
+};
+
 function SelectUrPlan() {
+  const [range, setRange] = useState("mon");
+  const [priceData, setPriceData] = useState({
+    arcade: {
+      name: "Arcade",
+      price: 9,
+    },
+    advanced: {
+      name: "Advanced",
+      price: 12,
+    },
+    pro: {
+      name: "Pro",
+      price: 15,
+    },
+  });
+
   const { checked, handleNext, selectedPlan, setSelectedPlan, state } =
     useApp();
+
+  // update the prices when user checked the switch button
+  useEffect(() => {
+    if (checked) {
+      setRange("yr");
+      setPriceData((prevState) => ({
+        ...prevState,
+        arcade: {
+          ...prevState.arcade,
+          price: 90,
+        },
+        advanced: {
+          ...prevState.advanced,
+          price: 120,
+        },
+        pro: {
+          ...prevState.pro,
+          price: 150,
+        },
+      }));
+    } else {
+      setPriceData(initialState);
+      setRange("mon");
+    }
+  }, [checked]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleNext();
   };
+
   return (
     <CSSTransition
       in={state === 2}
@@ -46,7 +103,9 @@ function SelectUrPlan() {
                 />
               </div>
               <h3 className="form-title-sm">Arcade</h3>
-              <span className="form-text">$9/mon</span>
+              <span className="form-text">
+                ${priceData.arcade.price}/{range}
+              </span>
             </div>
           </div>
 
@@ -66,7 +125,9 @@ function SelectUrPlan() {
                 />
               </div>
               <h3 className="form-title-sm">Advanced</h3>
-              <span className="form-text">$12/mon</span>
+              <span className="form-text">
+                ${priceData.advanced.price}/{range}
+              </span>
             </div>
           </div>
 
@@ -80,8 +141,10 @@ function SelectUrPlan() {
               <div className="form-icon">
                 <img src={proIcon} height={35} width={35} alt="arcade_icon" />
               </div>
-              <h3 className="form-title-sm">Arcade</h3>
-              <span className="form-text">$15/mon</span>
+              <h3 className="form-title-sm">Pro</h3>
+              <span className="form-text">
+                ${priceData.pro.price}/{range}
+              </span>
             </div>
           </div>
         </div>
