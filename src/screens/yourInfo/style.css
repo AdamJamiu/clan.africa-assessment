@@ -1,0 +1,31 @@
+@import url("../../index.css");
+
+.form-section{
+    margin-bottom: 1em;
+}
+
+.info-container .form-title{
+color: var(--primary-marine-blue);
+line-height: 1.5;
+font-size: 28px;
+}
+
+.label-wrap{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+}
+
+.info-container .form-text{
+    font-size: 15px;
+    color: var(--neutral-cool-gray);
+    line-height: 1.9;
+    padding-bottom: 2em;
+}
+
+.label-wrap .error{
+    font-size: 14px;
+    color: var(--primary-strawberry-red);
+    font-weight: bold;
+}

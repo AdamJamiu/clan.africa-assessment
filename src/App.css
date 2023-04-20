@@ -1,42 +1,61 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5em;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100%;
+  padding: 2em 4em;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+label,
+input {
+  display: inline-block;
+  vertical-align: middle;
+  /* optional */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label {
+  width: 100px;
+  font-size: var(--body-paragraph);
+  color: var(--primary-marine-blue);
+  width: max-content;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input {
+  width: 100%;
+  padding: 1em;
+  margin-left: 10px;
+  border-radius: 4px;
+  margin: .5em 0;
+  color: var(--primary-marine-blue);
+  border: 1px solid var(--neutral-cool-gray);
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+input:focus,
+input:active {
+  border-color: var(--primary-purplish-blue) !important;
+  outline: none;
 }
 
-.read-the-docs {
-  color: #888;
+
+/* For Safari and Chrome */
+input::-webkit-input-placeholder {
+  color: var(--neutral-cool-gray);
+  font-weight: bold;
+}
+
+/* For Firefox */
+input:-moz-placeholder {
+  color: var(--neutral-cool-gray);
+  font-weight: bold;
+}
+
+input::-moz-placeholder {
+  color: var(--neutral-cool-gray);
+  font-weight: bold;
 }
