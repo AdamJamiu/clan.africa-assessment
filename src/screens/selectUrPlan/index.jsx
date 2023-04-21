@@ -90,16 +90,12 @@ function SelectUrPlan() {
     setPlan(priceData.pro.name, priceData.pro.price)
   }
 
-  const handleClick = () => {
-    console.log("first")
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleNext();
   };
 
-  console.log(priceState)
+  // console.log(priceState)
 
   return (
     <CSSTransition

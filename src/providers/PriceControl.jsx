@@ -26,6 +26,10 @@ const reducer = (state, action) => {
       return {
         ...state, add_ons: state.add_ons.filter(itm => itm.name !== action.payload)
       };
+    case "CALCULATE_TOTAL_PRICE":
+      const totalAddOnsPrice = state.add_ons.reduce((acc, addon) => acc + addon.price, 0);
+      const totalPrice = state.plan.price + totalAddOnsPrice;
+      return { ...state, total_price: totalPrice };
     default:
       return state;
   }
@@ -52,9 +56,14 @@ export const PriceProvider = ({ children }) => {
     dispatch({ type: "REMOVE_ADD_ONS", payload: itm })
   }
 
+  const calculateTotalPrice = () => {
+    dispatch({ type: "CALCULATE_TOTAL_PRICE" })
+  }
+
   const setPlan = useCallback((product, price) => {
     dispatch({ type: 'SET_PLAN', payload: { product, price } });
   }, [dispatch]);
+
 
   const contextValue = {
     priceState,
@@ -62,6 +71,7 @@ export const PriceProvider = ({ children }) => {
     updateYearlyPrice,
     addAddOns,
     removeAddOns,
+    calculateTotalPrice,
     setPlan
   };
 

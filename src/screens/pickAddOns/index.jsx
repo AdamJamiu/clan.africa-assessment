@@ -14,8 +14,8 @@ const initialPrice = [{
 }]
 
 function PickAddOns() {
-  const { onlineService, largerStorage, customizeProfile, state, checked } = useApp();
-  const { addAddOns, removeAddOns } = usePrice();
+  const { onlineService, largerStorage, customizeProfile, state, checked, handleNext } = useApp();
+  const { addAddOns, removeAddOns, calculateTotalPrice } = usePrice();
   const [priceList, setPriceList] = useState(initialPrice)
 
   useEffect(() => {
@@ -56,6 +56,8 @@ function PickAddOns() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    calculateTotalPrice();
+    handleNext()
   };
 
   return (
