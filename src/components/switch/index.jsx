@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useApp from "../../hooks/useApp";
+import usePrice from "../../hooks/usePrice";
 
 const styles = {
   switch: {
@@ -37,10 +38,16 @@ const styles = {
 
 const SwitchButton = () => {
   const { checked, handleCheck } = useApp();
+  const { updateYearlyPrice, updateMonthlyPrice } = usePrice();
 
+  function handleSwicth() {
+    handleCheck()
+    if (!checked) updateYearlyPrice();
+    else updateMonthlyPrice();
+  }
   return (
     <div>
-      <div style={styles.switch} onClick={handleCheck}>
+      <div style={styles.switch} onClick={handleSwicth}>
         <div style={styles.track} />
         <div style={{ ...styles.thumb, ...(checked && styles.active) }} />
       </div>

@@ -4,6 +4,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   // Global states
+  const [range, setRange] = useState("mon");
   const [checked, setChecked] = useState(false);
   const [state, setState] = useState(4);
   const [selectedPlan, setSelectedPlan] = useState("arcade");
@@ -88,6 +89,8 @@ export const AppProvider = ({ children }) => {
     largerStorage,
     customizeProfile,
     handleCheckboxChange,
+    range,
+    setRange
   };
   return <AppContext.Provider value={actions}>{children}</AppContext.Provider>;
 };

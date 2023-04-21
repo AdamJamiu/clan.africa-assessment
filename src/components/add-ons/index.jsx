@@ -1,7 +1,7 @@
 import useApp from "../../hooks/useApp";
 import "./style.css";
 
-function AddOn({ title, desc, price, checked, name }) {
+function AddOn({ title, desc, price, checked, name, onClick }) {
   const { handleCheckboxChange } = useApp();
 
   const handleClick = () => {
@@ -18,6 +18,7 @@ function AddOn({ title, desc, price, checked, name }) {
   return (
     <div className="add-on-container" onClick={handleClick}>
       <input
+        onClick={onClick}
         checked={checked}
         onChange={handleCheckboxChange}
         type="checkbox"
@@ -27,7 +28,7 @@ function AddOn({ title, desc, price, checked, name }) {
         <p className="add-on-title">{title}</p>
         <p className="add-on-desc">{desc}</p>
       </div>
-      <span className="add-on-price">{price}</span>
+      <span className="add-on-price">+${price}/yr</span>
     </div>
   );
 }

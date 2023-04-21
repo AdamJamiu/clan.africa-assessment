@@ -7,6 +7,7 @@ import SwitchButton from "../../components/switch";
 import useApp from "../../hooks/useApp";
 import "./style.css";
 import { CSSTransition } from "react-transition-group";
+import usePrice from "../../hooks/usePrice"
 
 const initialState = {
   arcade: {
@@ -24,7 +25,8 @@ const initialState = {
 };
 
 function SelectUrPlan() {
-  const [range, setRange] = useState("mon");
+  const { setPlan, priceState } = usePrice();
+
   const [priceData, setPriceData] = useState({
     arcade: {
       name: "Arcade",
@@ -40,12 +42,16 @@ function SelectUrPlan() {
     },
   });
 
-  const { checked, handleNext, selectedPlan, setSelectedPlan, state } =
+  const { checked, handleNext, selectedPlan, setSelectedPlan, state, range, setRange } =
     useApp();
 
-  // update the prices when user checked the switch button
+  useEffect(() => {
+    if (priceState.plan.product === "") setPlan("Arcade", 9)
+  }, [])
+
   useEffect(() => {
     if (checked) {
+
       setRange("yr");
       setPriceData((prevState) => ({
         ...prevState,
@@ -66,12 +72,34 @@ function SelectUrPlan() {
       setPriceData(initialState);
       setRange("mon");
     }
+
   }, [checked]);
+
+  function handleArcadeSelect() {
+    setSelectedPlan("arcade")
+    setPlan(priceData.arcade.name, priceData.arcade.price)
+  }
+
+  function handleAdvancedSelect() {
+    setSelectedPlan("advanced")
+    setPlan(priceData.advanced.name, priceData.advanced.price)
+  }
+
+  function handleProSelect() {
+    setSelectedPlan("pro")
+    setPlan(priceData.pro.name, priceData.pro.price)
+  }
+
+  const handleClick = () => {
+    console.log("first")
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleNext();
   };
+
+  console.log(priceState)
 
   return (
     <CSSTransition
@@ -89,10 +117,9 @@ function SelectUrPlan() {
         <div className="form-wrap">
           <div className="selection-wrap">
             <div
-              onClick={() => setSelectedPlan("arcade")}
-              className={`${
-                selectedPlan === "arcade" ? "active" : ""
-              } selection-col`}
+              onClick={handleArcadeSelect}
+              className={`${selectedPlan === "arcade" ? "active" : ""
+                } selection-col`}
             >
               <div className="form-icon">
                 <img
@@ -111,10 +138,9 @@ function SelectUrPlan() {
 
           <div className="selection-wrap">
             <div
-              onClick={() => setSelectedPlan("advanced")}
-              className={`${
-                selectedPlan === "advanced" ? "active" : ""
-              } selection-col`}
+              onClick={handleAdvancedSelect}
+              className={`${selectedPlan === "advanced" ? "active" : ""
+                } selection-col`}
             >
               <div className="form-icon">
                 <img
@@ -133,10 +159,9 @@ function SelectUrPlan() {
 
           <div className="selection-wrap">
             <div
-              onClick={() => setSelectedPlan("pro")}
-              className={`${
-                selectedPlan === "pro" ? "active" : ""
-              } selection-col`}
+              onClick={handleProSelect}
+              className={`${selectedPlan === "pro" ? "active" : ""
+                } selection-col`}
             >
               <div className="form-icon">
                 <img src={proIcon} height={35} width={35} alt="arcade_icon" />
