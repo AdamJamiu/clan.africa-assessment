@@ -1,19 +1,44 @@
+@import url("../../index.css");
+
+.thank-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.thank-container .text-container {
+  padding: 1.5em 0;
+  text-align: center;
+}
+
+.thank-container .thank-heading {
+  padding-top: 1em;
+}
+
+.thank-container .text-container .text-gray {
+  color: var(--neutral-cool-gray);
+  line-height: 1.5;
+  /* font-size: 16px; */
+}
+
 /* this is the styles for the form transition */
 .fade-enter {
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-  }
-  
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}

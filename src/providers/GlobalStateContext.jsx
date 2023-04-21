@@ -6,7 +6,7 @@ export const AppProvider = ({ children }) => {
   // Global states
   const [range, setRange] = useState("mon");
   const [checked, setChecked] = useState(false);
-  const [state, setState] = useState(2);
+  const [state, setState] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState("arcade");
 
   // select your plan check boxes
