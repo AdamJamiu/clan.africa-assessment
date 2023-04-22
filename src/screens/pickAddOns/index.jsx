@@ -67,32 +67,35 @@ function PickAddOns() {
       timeout={300}
       unmountOnExit
     >
-      <form className="pick-container" onSubmit={handleSubmit}>
-        <h2 className="form-title">Pick add-ons</h2>
-        <p className="form-text">Add-ons help enhance your gaming experience</p>
-        <div className="add-on-wrapper">
-          <AddOn
-            title="Online Service"
-            desc="Access to multiplayer game"
-            price={priceList[0].onlineService}
-            checked={onlineService}
-            name="onlineService"
-          />
-          <AddOn
-            title="Larger Storage"
-            desc="Extra TB of cloud save"
-            price={priceList[0].largerStorage}
-            checked={largerStorage}
-            name="largerStorage"
-          />
+      <form onSubmit={handleSubmit}>
+        <div className="pick-container">
 
-          <AddOn
-            title="Customizable Profile"
-            desc="Custom theme on your profile"
-            price={priceList[0].customizeProfile}
-            checked={customizeProfile}
-            name="customizeProfile"
-          />
+          <h2 className="form-title">Pick add-ons</h2>
+          <p className="form-text">Add-ons help enhance your gaming experience</p>
+          <div className="add-on-wrapper">
+            <AddOn
+              title="Online Service"
+              desc="Access to multiplayer game"
+              price={priceList[0].onlineService}
+              checked={onlineService}
+              name="onlineService"
+            />
+            <AddOn
+              title="Larger Storage"
+              desc="Extra TB of cloud save"
+              price={priceList[0].largerStorage}
+              checked={largerStorage}
+              name="largerStorage"
+            />
+
+            <AddOn
+              title="Customizable Profile"
+              desc="Custom theme on your profile"
+              price={priceList[0].customizeProfile}
+              checked={customizeProfile}
+              name="customizeProfile"
+            />
+          </div>
         </div>
         <Button />
       </form>

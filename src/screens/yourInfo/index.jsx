@@ -4,7 +4,6 @@ import Button from "../../components/button";
 import useApp from "../../hooks/useApp";
 import "./style.css";
 import { useState } from "react";
-import { CSSTransition } from "react-transition-group";
 
 function YourInfo() {
   const { handleNext, formData, handleChange, state } = useApp();
@@ -20,7 +19,7 @@ function YourInfo() {
         "string.empty": "The field is required",
       }),
     number: Joi.string()
-      .pattern(new RegExp(/^\d{10}$/))
+      .pattern(new RegExp(/^\d{11}$/))
       .required()
       .messages({
         "string.pattern.base": "Invalid phone number format",
@@ -46,17 +45,13 @@ function YourInfo() {
     const newErrors = validateForm();
     setErrors(newErrors || {});
     if (newErrors) return;
-    alert(formData);
     handleNext();
   }
   return (
-    <CSSTransition
-      in={state === 1}
-      classNames="fade"
-      timeout={300}
-      unmountOnExit
-    >
-      <form className="info-container" onSubmit={handleSubmit}>
+
+    <form onSubmit={handleSubmit}>
+      <div className="info-container">
+
         <h2 className="form-title">Personal Info</h2>
         <p className="form-text">
           Please provide your name, email address and phone number
@@ -95,16 +90,18 @@ function YourInfo() {
             {errors.number && <div className="error">{errors.number}</div>}
           </div>
           <input
-            type="text"
+            type="tel"
             name="number"
-            placeholder="e.g +1234 5678"
+            min={11}
+            max={11}
+            placeholder="e.g 08012345678"
             value={formData.number}
             onChange={handleChange}
           />
         </div>
-        <Button />
-      </form>
-    </CSSTransition>
+      </div>
+      <Button />
+    </form>
   );
 }
 

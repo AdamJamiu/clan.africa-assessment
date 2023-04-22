@@ -2,14 +2,22 @@
 @import url("../index.css");
 
 .form-container {
-    padding: 0 2em;
-    /* background-color: red; */
-    height: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 3em 3em;
-    width: 100%;
+  padding: 0 2em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 3em 3em;
+  width: 100%;
+  flex: 2;
+}
+
+@media (max-width: 770px) {
+  .form-container {
+    padding: 0 !important;
+    background-color: #fff;
+    margin-top: 4em;
+    background-color: var(--neutral-alabaster);
+  }
 }

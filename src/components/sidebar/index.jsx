@@ -30,7 +30,7 @@ const Sidebar = () => {
       </div>
 
       <div className="state-count-wrap">
-        <span className={`${state === 4 ? "active" : ""} state-count`}>4</span>
+        <span className={`${state === 4 || state === 5 ? "active" : ""} state-count`}>4</span>
         <div className="count-info-wrap">
           <span className="count-info-thin">Step 4</span>
           <p className="count-info-bold">SUMMARY</p>

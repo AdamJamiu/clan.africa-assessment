@@ -4,6 +4,19 @@
   width: 100%;
 }
 
+@media (max-width: 770px) {
+  .finish-container {
+    background: #fff;
+    position: absolute;
+    right: 5%;
+    left: 5%;
+    width: 90%;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.2);
+  }
+}
+
 .finish-container .finishing-wrap {
   display: flex;
   flex-direction: column;

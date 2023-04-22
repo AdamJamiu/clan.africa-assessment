@@ -1,55 +1,83 @@
 @import url("../../index.css");
 
-.sidebar-container{
-    background: url("../../assets/images/bg-sidebar-desktop.svg");
-    /* background-position: 100%; */
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-direction: column;
-    padding: 2em;
-    gap: 2em;
-    font-size: var(--body-paragraph);
-    color: #fff;
-    /* background-color: red; */
-    /* flex: 1; */
+.sidebar-container {
+  background: url("../../assets/images/bg-sidebar-desktop.svg");
+  /* background-position: 100%; */
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  padding: 2em;
+  gap: 2em;
+  font-size: var(--body-paragraph);
+  color: #fff;
+  flex: 1;
 }
 
-.state-count-wrap{
-    display: flex;
-    flex-wrap: no-wrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1em;
+@media (max-width: 770px) {
+  .sidebar-container {
+    padding: 1em 0;
+    position: absolute;
+    height: 30%;
     width: 100%;
+    gap: 1em;
+    background-position: 100%;
+    background-size: cover;
+    background-image: url("../../assets/images/bg-sidebar-mobile.svg");
+    top: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .state-count-wrap {
+    flex-direction: row;
+    gap: 0;
+    width: fit-content !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0;
+  }
+
+  .count-info-wrap {
+    display: none;
+  }
 }
 
-.state-count-wrap .state-count{
-    border: 1px solid white;
-    border-radius: 100%;
-    padding: 0.5em 0.8em;
+.state-count-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
 }
 
-.state-count-wrap .active{
-    background-color: var(--primary-light-blue);
-    color: black !important;
-    border-color: var(--primary-light-blue);
+.state-count-wrap .state-count {
+  border: 1px solid white;
+  border-radius: 100%;
+  padding: 0.5em 0.8em;
 }
 
-.count-info-wrap{
-
+.state-count-wrap .active {
+  background-color: var(--primary-light-blue);
+  color: black !important;
+  border-color: var(--primary-light-blue);
 }
 
-.count-info-wrap span{
-    font-weight: thin;
-    color: var(--neutral-cool-gray);
+.count-info-wrap span {
+  font-weight: thin;
+  color: var(--neutral-cool-gray);
 }
 
-.count-info-wrap p{
-    color: #fff;
-    font-weight: bold;
+.count-info-wrap p {
+  color: #fff;
+  font-weight: bold;
 }

@@ -1,33 +1,45 @@
 .btn-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 4em; */
+}
+
+@media (max-width: 770px) {
+  .btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+
+    padding: 1em 2em;
+  }
 }
 
 .btn-next {
-    background: var(--primary-marine-blue);
-    border: none;
-    padding: .8em 1em;
-    color: #fff;
-    border-radius: 7px;
-    cursor: pointer;
+  background: var(--primary-marine-blue);
+  border: none;
+  padding: 0.8em 1em;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
 }
 
 .btn-next:hover {
-    opacity: 0.8;
-    background-color: var(--primary-purplish-blue);
+  opacity: 0.8;
+  background-color: var(--primary-purplish-blue);
 }
 
 .btn-prev {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--neutral-cool-gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--neutral-cool-gray);
 }
 
 .btn-prev:hover {
-    color: var(--primary-marine-blue);
+  color: var(--primary-marine-blue);
 }

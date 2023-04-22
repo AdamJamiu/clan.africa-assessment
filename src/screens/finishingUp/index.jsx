@@ -18,36 +18,38 @@ function FinishingUp() {
   };
 
   return (
-    <form className="finish-container" onSubmit={handleSubmit}>
-      <h2 className="form-title">Finishing Up</h2>
-      <p className="form-text">
-        Double-check everything looks OK before confirming
-      </p>
+    <form onSubmit={handleSubmit}>
+      <div className="finish-container">
 
-      <div className="finishing-wrap">
-        <div className="finish-col">
-          <div>
-            <p className="finish-title">{priceState.plan.product} (Monthly)</p>
-            <p onClick={() => setState(2)} className="change-btn">Change</p>
+        <h2 className="form-title">Finishing Up</h2>
+        <p className="form-text">
+          Double-check everything looks OK before confirming
+        </p>
+
+        <div className="finishing-wrap">
+          <div className="finish-col">
+            <div>
+              <p className="finish-title">{priceState.plan.product} (Monthly)</p>
+              <p onClick={() => setState(2)} className="change-btn">Change</p>
+            </div>
+            <p className="finish-text">${priceState.plan.price}/{range} </p>
           </div>
-          <p className="finish-text">${priceState.plan.price}/{range} </p>
+
+          {priceState?.add_ons.map((item, index) => (
+            <div className="finish-col-sm" key={index}>
+              <div>
+                <p className="finish-text-gray">{item.name}</p>
+              </div>
+              <p className="finish-price-thin">${item.price}/{range} </p>
+            </div>
+          ))}
         </div>
 
-        {priceState?.add_ons.map((item, index) => (
-          <div className="finish-col-sm" key={index}>
-            <div>
-              <p className="finish-text-gray">{item.name}</p>
-            </div>
-            <p className="finish-price-thin">${item.price}/{range} </p>
-          </div>
-        ))}
+        <div className="total-wrap">
+          <p className="finish-text-gray">Total (per {range === "mon" ? "Month" : "Year"})</p>
+          <p className="finish-price-bold">${priceState.total_price}/{range} </p>
+        </div>
       </div>
-
-      <div className="total-wrap">
-        <p className="finish-text-gray">Total (per {range === "mon" ? "Month" : "Year"})</p>
-        <p className="finish-price-bold">${priceState.total_price}/{range} </p>
-      </div>
-
       <Button />
     </form>
   );
