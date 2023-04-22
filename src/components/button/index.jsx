@@ -7,7 +7,7 @@ const Button = () => {
     <div className="btn-wrapper">
       <button
         type="button"
-        className="btn-prev"
+        className={`${state === 1 ? "none" : ""} btn-prev`}
         disabled={state < 2 ? true : false}
         onClick={() => handlePrevious()}
       >

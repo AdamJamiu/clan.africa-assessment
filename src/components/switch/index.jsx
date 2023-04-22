@@ -38,12 +38,18 @@ const styles = {
 
 const SwitchButton = () => {
   const { checked, handleCheck } = useApp();
-  const { updateYearlyPrice, updateMonthlyPrice } = usePrice();
+  const { updateYearlyPrice, updateMonthlyPrice, updateAddOnsPriceYearly, updateAddOnsPriceMonthly } = usePrice();
 
   function handleSwicth() {
     handleCheck()
-    if (!checked) updateYearlyPrice();
-    else updateMonthlyPrice();
+    if (!checked) {
+      updateYearlyPrice()
+      updateAddOnsPriceYearly()
+    }
+    else {
+      updateMonthlyPrice()
+      updateAddOnsPriceMonthly();
+    }
   }
   return (
     <div>

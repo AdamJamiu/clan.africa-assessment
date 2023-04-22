@@ -26,13 +26,40 @@ const reducer = (state, action) => {
       return {
         ...state, add_ons: state.add_ons.filter(itm => itm.name !== action.payload)
       };
+
     case "CALCULATE_TOTAL_PRICE":
       const totalAddOnsPrice = state.add_ons.reduce((acc, addon) => acc + addon.price, 0);
       const totalPrice = state.plan.price + totalAddOnsPrice;
       return { ...state, total_price: totalPrice };
+
+    case "MULTIPLY_ADD_ON_PRICES_BY_10":
+      if (state.add_ons.length > 0) {
+        const multiplieddAddOns = state.add_ons.map(addOn => ({
+          ...addOn,
+          price: addOn.price * 10,
+        }));
+        return {
+          ...state,
+          add_ons: multiplieddAddOns,
+        };
+      }
+
+    case "DIVIDE_ADD_ON_PRICES_BY_10":
+      if (state.add_ons.length > 0) {
+        const dividedAddOns = state.add_ons.map(addOn => ({
+          ...addOn,
+          price: addOn.price / 10,
+        }));
+        return {
+          ...state,
+          add_ons: dividedAddOns,
+        };
+      }
+
     default:
       return state;
   }
+
 };
 
 export const PriceContext = createContext();
@@ -64,6 +91,14 @@ export const PriceProvider = ({ children }) => {
     dispatch({ type: 'SET_PLAN', payload: { product, price } });
   }, [dispatch]);
 
+  const updateAddOnsPriceYearly = () => {
+    dispatch({ type: "MULTIPLY_ADD_ON_PRICES_BY_10" });
+  }
+
+  const updateAddOnsPriceMonthly = () => {
+    dispatch({ type: "DIVIDE_ADD_ON_PRICES_BY_10" });
+  }
+
 
   const contextValue = {
     priceState,
@@ -72,7 +107,9 @@ export const PriceProvider = ({ children }) => {
     addAddOns,
     removeAddOns,
     calculateTotalPrice,
-    setPlan
+    setPlan,
+    updateAddOnsPriceMonthly,
+    updateAddOnsPriceYearly
   };
 
   return (

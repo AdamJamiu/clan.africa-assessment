@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import AddOn from "../../components/add-ons";
 import Button from "../../components/button";
 import useApp from "../../hooks/useApp";
 import usePrice from "../../hooks/usePrice";
 import "./style.css";
-import { useEffect, useState } from "react";
 
 
 const initialPrice = [{
@@ -14,9 +14,9 @@ const initialPrice = [{
 }]
 
 function PickAddOns() {
+  const [priceList, setPriceList] = useState(initialPrice)
   const { onlineService, largerStorage, customizeProfile, state, checked, handleNext } = useApp();
   const { addAddOns, removeAddOns, calculateTotalPrice } = usePrice();
-  const [priceList, setPriceList] = useState(initialPrice)
 
   useEffect(() => {
     if (checked) {
@@ -61,45 +61,38 @@ function PickAddOns() {
   };
 
   return (
-    <CSSTransition
-      in={state === 3}
-      classNames="fade"
-      timeout={300}
-      unmountOnExit
-    >
-      <form onSubmit={handleSubmit}>
-        <div className="pick-container">
+    <form onSubmit={handleSubmit}>
+      <div className="pick-container">
 
-          <h2 className="form-title">Pick add-ons</h2>
-          <p className="form-text">Add-ons help enhance your gaming experience</p>
-          <div className="add-on-wrapper">
-            <AddOn
-              title="Online Service"
-              desc="Access to multiplayer game"
-              price={priceList[0].onlineService}
-              checked={onlineService}
-              name="onlineService"
-            />
-            <AddOn
-              title="Larger Storage"
-              desc="Extra TB of cloud save"
-              price={priceList[0].largerStorage}
-              checked={largerStorage}
-              name="largerStorage"
-            />
+        <h2 className="form-title">Pick add-ons</h2>
+        <p className="form-text">Add-ons help enhance your gaming experience</p>
+        <div className="add-on-wrapper">
+          <AddOn
+            title="Online Service"
+            desc="Access to multiplayer game"
+            price={priceList[0].onlineService}
+            checked={onlineService}
+            name="onlineService"
+          />
+          <AddOn
+            title="Larger Storage"
+            desc="Extra TB of cloud save"
+            price={priceList[0].largerStorage}
+            checked={largerStorage}
+            name="largerStorage"
+          />
 
-            <AddOn
-              title="Customizable Profile"
-              desc="Custom theme on your profile"
-              price={priceList[0].customizeProfile}
-              checked={customizeProfile}
-              name="customizeProfile"
-            />
-          </div>
+          <AddOn
+            title="Customizable Profile"
+            desc="Custom theme on your profile"
+            price={priceList[0].customizeProfile}
+            checked={customizeProfile}
+            name="customizeProfile"
+          />
         </div>
-        <Button />
-      </form>
-    </CSSTransition>
+      </div>
+      <Button />
+    </form>
   );
 }
 
