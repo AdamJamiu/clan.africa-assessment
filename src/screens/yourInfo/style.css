@@ -4,6 +4,10 @@
   margin-bottom: 1em;
 }
 
+.info-container {
+  width: fit-content;
+}
+
 .info-container .form-title {
   color: var(--primary-marine-blue);
   line-height: 1.5;
@@ -12,6 +16,7 @@
 
 @media (max-width: 770px) {
   .info-container {
+    width: 90%;
     background: #fff;
     position: absolute;
     right: 5%;

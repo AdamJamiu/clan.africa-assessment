@@ -2,7 +2,7 @@
 
 .pick-container {
   margin-bottom: 1em;
-  width: 90%;
+  width: 100%;
 }
 
 @media (max-width: 770px) {
@@ -14,6 +14,7 @@
     padding: 2em;
     border-radius: 12px;
     box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.2);
+    width: 90%;
   }
 
   .pick-container .add-on-wrapper {
